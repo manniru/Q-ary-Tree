@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1413982604 source:d:\mannircpp\qary\main.cpp
+	<string.h>
+	"stdio.h"
+	<stdlib.h>
+	<fcntl.h>
+	<time.h>
+
+1413982604 source:d:\git\q-ary-tree\qary\main.cpp
+	<string.h>
+	"stdio.h"
+	<stdlib.h>
+	<fcntl.h>
+	<time.h>
+

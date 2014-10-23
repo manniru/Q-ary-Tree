@@ -1,10 +1,12 @@
-
-
 #include <string.h>
 #include "stdio.h"
 #include <stdlib.h>
 #include <fcntl.h>
 #include <time.h>
+
+#include <iostream>
+#include <string>
+
 const int tagnum=100;
 const int idlong=8;
 int collisionnum=0;
@@ -69,15 +71,57 @@ void creatID()
 {
 	int i;
 	int j;
-	printf("the example ID is:\n");
+	//printf("GENERATED RANDOM TAGS:\n");
+	int cnt = 1;
+
 	for( i=0;i<tagnum;i++)
 	{
 		tag[i].sleep=true;
 		for(j=0;j<idlong;j++)
 			tag[i].id[j]=rand()%2+48;
 		tag[i].id[idlong]='\0';
-		printf("ID %d :%s\n",i+1,tag[i].id);
+		////printf("ID %d :%s\n",i+1,tag[i].id);
 	}
+
+}
+
+void generateTags()
+{
+	int i;
+	int j;
+	printf("                        GENERATED RANDOM TAGS\n");
+	int cnt = 1;
+
+    for(int a=1;a<=20;a++)
+    {
+        for(int b=1;b<=5;b++)
+        {
+            printf("|-------------");
+        }
+        printf("|\n");
+        //printf("|-------------|-------------|-------------|-------------|-------------|\n");
+
+        for(int b=1;b<=5;b++)
+        {
+            if(cnt<10) printf("|  %d=%s ",cnt, tag[cnt].id);
+            if(cnt>=10) printf("| %d=%s ",cnt, tag[cnt].id);
+            if(cnt==100) printf("|%d=%s ",cnt, tag[cnt].id);
+
+            cnt++;
+        }
+        printf("|\n");
+
+
+        //printf("| 01=10100101 | 02=10100101 | 03=10100101 | 04=10100101 | 05=10100101 |\n");
+        //printf("|-------------|-------------|-------------|-------------|-------------|\n");
+
+        for(int b=1;b<=5;b++)
+        {
+            printf("|-------------");
+        }
+        printf("|\n");
+
+    }
 
 }
 
@@ -86,7 +130,7 @@ int main()
 {
 
 	 creatID();
-
+ generateTags();
 
 
 	int i;
@@ -149,7 +193,7 @@ int main()
 
 		while (collisionnum>1)
 		{
-            printf("\n collisionnum>1  ");
+            printf("\ncollisionnum>1 = %s",tag[i].id);
 			for(i=0;i<idlong;i++)
 			{
 
@@ -190,7 +234,7 @@ int main()
 			request_num--;
 			if( answer[0]!=' ')
 			{	out_num++;
-			printf("\nthe %d id number is [c0-as:   ",out_num);
+			printf("\nsuccessful     = ");
 			printf("%s\n",answer);
 
 
@@ -198,7 +242,7 @@ int main()
 
 				for (int look_cout=befor_tagnum-1;look_cout>=0;look_cout--)
 				{
-                    printf("answer1");
+                    printf("\nsuccessful     = %s",tag[i].id);
 					if (befor_bit[look_cout][1]==1)
 					{
 						befor_tagnum=look_cout+1;
@@ -212,7 +256,7 @@ int main()
 
 			for (delid=0;delid<tagnum;delid++)
 			{
-                    printf("answer2");
+                    ////printf("answer2");
 				if (strcmp(tag[delid].id,answer)==0)
 				{
 					tag[delid].sleep=false;
@@ -225,7 +269,7 @@ int main()
 
 		else if(collisionnum==1)
 		{
-            printf("\n collisionnum=1  ");
+            printf("\ncollisionnum=1 = %s",tag[i].id);
 			collisionnum=0;
 
 				for (int look_cout=befor_tagnum-1;look_cout>=0;look_cout--)
@@ -246,7 +290,7 @@ int main()
 				{
 					answer[i]='1';
 					out_num++;
-					printf("\nthe %d id number is [c1-a1]:   ",out_num);
+					printf("\nsuccessful     = ");
 					printf("%s\n",answer);
 
 
@@ -265,7 +309,7 @@ int main()
 
 					answer[i]='0';
 					out_num++;
-					printf("\nthe %d id number is [c1-a0]:   ",out_num);
+					printf("\nsuccessful     = ");
 					printf("%s\n",answer);
 
 

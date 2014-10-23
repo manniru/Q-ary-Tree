@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1413771303 source:d:\git\q-ary-tree\main.cpp
+	<string.h>
+	"stdio.h"
+	<stdlib.h>
+	<fcntl.h>
+	<time.h>
+	<iostream>
+	<string>
+
